@@ -8,6 +8,8 @@ import android.view.MenuItem;
 import android.view.Window;
 import android.widget.TextView;
 
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
     private String provider;
     private LocationManager locationManager;
@@ -20,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
         TextView textView = (TextView) findViewById(R.id.location_textview);
         locationManager = (LocationManager)getSystemService(LOCATION_SERVICE);
-
+        List<String> providerList = locationManager.getProviders(true);
     }
 
     @Override
@@ -44,5 +46,4 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
 }
