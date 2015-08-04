@@ -1,5 +1,6 @@
 package com.example.test.locationtest;
 
+import android.location.LocationManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -8,6 +9,8 @@ import android.view.Window;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+    private String provider;
+    private LocationManager locationManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 
         TextView textView = (TextView) findViewById(R.id.location_textview);
+        locationManager = (LocationManager)getSystemService(LOCATION_SERVICE);
+
     }
 
     @Override
