@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -23,6 +24,13 @@ public class MainActivity extends AppCompatActivity {
         TextView textView = (TextView) findViewById(R.id.location_textview);
         locationManager = (LocationManager)getSystemService(LOCATION_SERVICE);
         List<String> providerList = locationManager.getProviders(true);
+        if(providerList.contains(LocationManager.GPS_PROVIDER)){
+            provider = LocationManager.GPS_PROVIDER;
+        }else if (providerList.contains(LocationManager.NETWORK_PROVIDER)){
+            provider = LocationManager.NETWORK_PROVIDER;
+        }else{
+            Toast.makeText(this, "No location provider to use", Toast.LENGTH_LONG).show();
+        }
     }
 
     @Override
